@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        // Run the pipeline stages inside a Docker container with Docker installed
-        docker {
-            image 'docker:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
 
     environment {
         BRANCH_NAME = 'main'
