@@ -2,15 +2,18 @@ pipeline {
     agent any
 
     environment {
-        BRANCH_NAME = 'main'
         DOCKER_IMAGE_NAME = 'react-app'
         DOCKER_CONTAINER_NAME = 'react-app-container'
+    }
+
+    parameters {
+        choice(name: 'BRANCH', choices: ['main', 'develop'], description: 'Branch to build')
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: "${BRANCH_NAME}", url: 'https://github.com/hypernova0910/react-app.git'
+                git branch: "${params.BRANCH}", url: 'https://github.com/hypernova0910/react-app.git'
             }
         }
 
