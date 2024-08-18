@@ -31,7 +31,7 @@ pipeline {
                     }
 
                     // Run the Docker container
-                    sh "docker run -d ${DOCKER_IMAGE_NAME}"
+                    sh "docker run -d ${DOCKER_IMAGE_NAME} -p 4000:80"
                 }
             }
         }
