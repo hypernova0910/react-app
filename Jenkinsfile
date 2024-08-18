@@ -1,13 +1,13 @@
 pipeline {
     agent any
 
-    parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
-    }
-
     environment {
         DOCKER_IMAGE_NAME = 'react-app'
         DOCKER_CONTAINER_NAME = 'react-app-container'
+    }
+
+    parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
     stages {
