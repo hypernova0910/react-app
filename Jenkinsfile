@@ -13,7 +13,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: "*/${params.BRANCH}", url: 'https://github.com/hypernova0910/react-app.git'
+                // Correct refspec format
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: "*/${params.BRANCH}"]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[url: 'https://github.com/hypernova0910/react-app.git']]
+                ])
             }
         }
 
