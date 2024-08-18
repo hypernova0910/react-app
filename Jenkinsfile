@@ -4,6 +4,7 @@ pipeline {
     environment {
         BRANCH_NAME = 'main'
         DOCKER_IMAGE_NAME = 'react-app'
+        DOCKER_CONTAINER_NAME = 'react-app-container'
     }
 
     stages {
@@ -31,7 +32,7 @@ pipeline {
                     }
 
                     // Run the Docker container
-                    sh "docker run -d ${DOCKER_IMAGE_NAME} -p 4000:80"
+                    sh "docker run -dp 4000:80 --name ${DOCKER_CONTAINER_NAME} ${DOCKER_IMAGE_NAME}"
                 }
             }
         }
