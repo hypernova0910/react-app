@@ -32,6 +32,7 @@ pipeline {
                     def containerId = sh(script: "docker ps -q --filter ancestor=${DOCKER_IMAGE_NAME}", returnStdout: true).trim()
                     if (containerId) {
                         sh "docker stop ${containerId}"
+                        sh "docker rm ${containerId}"
                     }
 
                     // Run the Docker container
