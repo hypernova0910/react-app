@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: "${params.BRANCH}", url: 'https://github.com/hypernova0910/react-app.git'
+                git branch: "*/${params.BRANCH}", url: 'https://github.com/hypernova0910/react-app.git'
             }
         }
 
